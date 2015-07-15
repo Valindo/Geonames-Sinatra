@@ -1,0 +1,73 @@
+<br/>
+<table>
+
+	<tr>
+		<!-- <th>map</th> -->
+		<th>Name</th>
+		<th>Type</th>
+		<th>Country Name</th>
+		<th>Latitude</th>
+		<th>Longitude</th>
+		<th>Population</th>
+	</tr>
+	<% @my_hash["geonames"].each do |x| %>
+	<tr>
+
+		<td>
+			<span class="search-list">
+				<a href="/find/<%= x["name"]%>">
+					<%= x["name"] %>
+				</a>
+			</span>
+		</td>
+
+		<td>
+			<span class="search-list">
+				<a href="">
+					<%= x["fclName"] %>
+				</a>
+			</span>
+		</td>
+
+		<td>
+			<span class="search-list">
+				<a href="">
+					<%= x["countryName"] %>
+				</a>
+			</span>
+		</td>
+
+		<td>
+			<span class="search-list">
+				<a href="">
+					<%= x["lat"] %>
+				</a>
+			</span>
+		</td>
+
+		<td>
+			<span class="search-list">
+				<a href="">
+					<%= x["lng"] %>
+				</a>
+			</span>
+		</td>
+
+		<td>
+			<span class="search-list">
+				<a href="">
+					<%= x["population"] %>
+				</a>
+			</span>
+		</td>
+
+		<td>
+			<span class="search-list">
+				<a href="/check_nearby/<%= x["lat"] %>/<%= x["lng"] %>/<%= x["fcode"] %>">
+					<%= x["fcode"] %>
+				</a>
+			</span>
+		</td>
+	</tr>
+	<% end %>
+</table>
