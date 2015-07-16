@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'net/http'
 require 'json'
-# require 'sinatra/reloader'
+
 
 
 get '/' do
@@ -64,5 +64,12 @@ end
 
 
 post '/info/:placename' do
-	
+	@placename = params[:placename]
+	@geonameId = params[:geonameId]
+	@population = params[:population]
+	@countryName = params[:countryName]
+	@fclName = params[:fclName]
+	@lat = params[:lat]
+	@lng = params[:lng]
+	erb :info
 end

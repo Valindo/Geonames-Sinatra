@@ -1,0 +1,46 @@
+<h1 class="text-center"><%= @placename %></h1>
+<br/>
+<script>
+	function initialize() {
+		var mapCanvas = document.getElementById('map-canvas');
+		var mapOptions = {
+			center: new google.maps.LatLng(<%=@lat%>,<%=@lng%>),
+			zoom: 7,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+		var map = new google.maps.Map(mapCanvas, mapOptions)
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<div id="map-canvas" class="container"></div>
+<br/>
+
+
+<table class="table">
+	<tr>
+		<td>Country</td>
+		<td><%=@countryName%></td>
+	</tr>
+
+	<tr>
+		<td>Population</td>
+		<td><%=@population%></td>
+	</tr>
+	<tr>
+		<td>GeonameId</td>
+		<td><%=@geonameId%></td>
+	</tr>
+
+	<tr>
+		<td>Type</td>
+		<td><%=@fclName%></td>
+	</tr>
+
+	<tr>
+		<td>Lat, Long</td>
+		<td><%=@lat%> , <%=@lng%></td>
+	</tr>
+
+</table>
+
