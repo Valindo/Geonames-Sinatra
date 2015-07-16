@@ -26,7 +26,7 @@ get '/find/:name' do
 	erb :search
 end
 
-get '/check_nearby/:lat/:lng/:fcode' do
+post '/check_nearby/:lat/:lng/:fcode' do
 	lat = params[:lat]
 	lng = params[:lng]
 	fcode = params[:fcode]
@@ -50,5 +50,25 @@ get '/children/:geoname' do
 	jsonfile = Net::HTTP.get(uri)
 	@my_hash = JSON.parse(jsonfile)
 	erb :search
+end
+
+
+get '/contains/:geonameid' do
+	geoid = params[:geonameid]
+	uri = URI('http://api.geonames.org/containsJSON?geonameId='+geoid+'&username=valindo')
+	jsonfile = Net::HTTP.get(uri)
+	@my_hash = JSON.parse(jsonfile)
+	erb :contains
+end
+
+
+
+get '/testing/:test' do
+	test = params[:test]
+	redirect to('/test1?test='+test)
+end
+
+post '/test1' do
+	"#{params[:test]}"
 end
 

@@ -1,11 +1,24 @@
-<h1>Enter something</h1>
+<div class="container size-of-container text-center">
+<h1 class="h1-align">Geoname Search</h1>
+<h4 class="grey">Type a location to get started!</h4>
 <div class="container">
 	<form class="form-inline" action="/search" method="post" >
 		<div class="form-group">
-			<input class="form-control" type="text" name="name">
+			<input class="form-control" type="text" name="name" placeholder="State/Country/Landmark" size="40">
 		</div>
 		<div class="form-group">
-			<button class="btn btn-primary smooth-edge" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			<div>
+				<button class="btn btn-primary smooth-edge" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			</div>
 		</div>
 	</form>
 </div>
+</div>
+
+<!-- 
+<form action="/test1" method="post">
+	<input type= "hidden"name="test" value="hello">
+	<button type="submit">Valindo</button>
+</form> -->
+
+<!-- <a href="/testing?test=valindo">yoyoyoyo</a> -->

@@ -13,3 +13,16 @@
 .navbar{
 	margin-bottom: 0px;
 }
+
+.search-list img{
+	height: 40px;
+	width: 40px;
+}
+
+.h1-align{
+	margin-top: 15%;
+}
+
+.grey{
+	color: #BDC3C7;
+}
