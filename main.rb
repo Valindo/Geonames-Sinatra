@@ -62,6 +62,6 @@ get '/contains/:geonameid' do
 end
 
 
-post 'info/:placename' do
-	@location = params[:object]
+post '/info/:placename' do
+	
 end
