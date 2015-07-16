@@ -36,3 +36,19 @@ get '/check_nearby/:lat/:lng/:fcode' do
 	erb :search
 end
 
+get '/neighbours/:geonameid' do
+	geoid = params[:geonameid]
+	uri = URI('http://api.geonames.org/neighboursJSON?geonameId='+geoid+'&username=valindo')
+	jsonfile = Net::HTTP.get(uri)
+	@my_hash = JSON.parse(jsonfile)
+	erb :search
+end
+
+get '/children/:geoname' do
+	geoid = params[:geoname]
+	uri = URI('http://api.geonames.org/childrenJSON?geonameId='+geoid+'&username=valindo')
+	jsonfile = Net::HTTP.get(uri)
+	@my_hash = JSON.parse(jsonfile)
+	erb :search
+end
+

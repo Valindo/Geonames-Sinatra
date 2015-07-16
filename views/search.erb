@@ -1,5 +1,4 @@
-<br/>
-<table>
+<table class="table table-striped">
 
 	<tr>
 		<!-- <th>map</th> -->
@@ -9,6 +8,7 @@
 		<th>Latitude</th>
 		<th>Longitude</th>
 		<th>Population</th>
+		<th>Type Code</th>
 	</tr>
 	<% @my_hash["geonames"].each do |x| %>
 	<tr>
@@ -23,15 +23,13 @@
 
 		<td>
 			<span class="search-list">
-				<a href="">
 					<%= x["fclName"] %>
-				</a>
 			</span>
 		</td>
 
 		<td>
 			<span class="search-list">
-				<a href="">
+				<a href="/find/<%= x["countryName"]%>">
 					<%= x["countryName"] %>
 				</a>
 			</span>
@@ -39,25 +37,19 @@
 
 		<td>
 			<span class="search-list">
-				<a href="">
 					<%= x["lat"] %>
-				</a>
 			</span>
 		</td>
 
 		<td>
 			<span class="search-list">
-				<a href="">
 					<%= x["lng"] %>
-				</a>
 			</span>
 		</td>
 
 		<td>
 			<span class="search-list">
-				<a href="">
 					<%= x["population"] %>
-				</a>
 			</span>
 		</td>
 
@@ -68,6 +60,24 @@
 				</a>
 			</span>
 		</td>
+
+		<td>
+			<span class="search-list">
+				<a href="/neighbours/<%= x["geonameId"] %>">
+					Check Neighbours
+				</a>
+			</span>
+		</td>
+
+		<td>
+			<span class="search-list">
+				<a href="/children/<%= x["geonameId"] %>">
+					Check Children
+				</a>
+			</span>
+		</td>
+
+
 	</tr>
 	<% end %>
 </table>
