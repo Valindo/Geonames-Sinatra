@@ -32,3 +32,9 @@
 .grey{
 	color: #BDC3C7;
 }
+
+.search-name{
+	border: 0px;
+	background-color: transparent;
+	color: #337ab7;
+}

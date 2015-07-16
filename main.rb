@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'net/http'
 require 'json'
+# require 'sinatra/reloader'
 
 
 get '/' do
@@ -26,7 +27,7 @@ get '/find/:name' do
 	erb :search
 end
 
-post '/check_nearby/:lat/:lng/:fcode' do
+get '/check_nearby/:lat/:lng/:fcode' do
 	lat = params[:lat]
 	lng = params[:lng]
 	fcode = params[:fcode]
