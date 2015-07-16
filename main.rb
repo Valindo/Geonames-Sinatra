@@ -11,7 +11,7 @@ end
 post '/search' do
 	data = params[:name]
 	data.gsub!(/\s/,"+")
-	uri = URI('http://api.geonames.org/searchJSON?q='+data+'&maxRows=10&username=valindo')
+	uri = URI('http://api.geonames.org/searchJSON?q='+data+'&username=valindo')
 	jsonfile = Net::HTTP.get(uri)
 	@my_hash = JSON.parse(jsonfile)
 	erb :search
@@ -62,13 +62,6 @@ get '/contains/:geonameid' do
 end
 
 
-
-get '/testing/:test' do
-	test = params[:test]
-	redirect to('/test1?test='+test)
+post 'info/:placename' do
+	@location = params[:object]
 end
-
-post '/test1' do
-	"#{params[:test]}"
-end
-
