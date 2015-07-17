@@ -1,3 +1,5 @@
+# REVIEW -- use a Gemfile along with rvm or bundle to manage all your app
+# dependencies.
 require 'sinatra'
 require 'net/http'
 require 'json'
@@ -9,9 +11,14 @@ get '/' do
 	erb :index
 end
 
+# REVIEW -- why are these POST calls in the first place?
 post '/search' do
 	@title = "Search | "+params[:name].to_s
 	data = params[:name]
+
+	# REVIEW -- use a URI lirbary to encode your URLs. the following code takes
+	# care of only one case, space characters. There are a lot of special cases
+	# in URLs.
 	data.gsub!(/\s/,"+")
 	uri = URI('http://api.geonames.org/searchJSON?q='+data+'&fuzzy=0&username=valindo')
 	jsonfile = Net::HTTP.get(uri)
@@ -20,6 +27,7 @@ post '/search' do
 end
 
 
+# REVIEW -- implement pagination. 10 at a time.
 get '/find/:name' do
 	data = params[:name]
 	uri = URI('http://api.geonames.org/searchJSON?name='+data+'&maxRows=10&username=valindo')
@@ -66,7 +74,9 @@ end
 # 	erb :contains
 # end
 
-
+# REVIEW -- badly structured. This URL shoud take a unique place identifier in
+# the URL, make a separate call to fetch all the place details, and display
+# them directly instead of depending upon the POST params.
 post '/info/:placename' do
 	@title = "About | "+params[:placename].to_s
 	@placename = params[:placename]

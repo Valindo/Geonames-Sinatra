@@ -13,6 +13,7 @@
 		<th>Places In</th>
 	</tr>
 	<% @my_hash["geonames"].each do |x| %>
+		<!-- REVIEW: I think you can pass strings to erb as well. No need to convert it into a symbol, eg. erb 'row' -->
 		<%= erb :'_row', :layout => false, :locals => {:x=>x} %>
 	<% end %>
 </table>
