@@ -1,4 +1,4 @@
-# REVIEW -- use a Gemfile along with rvm or bundle to manage all your app
+#DONE ----- # REVIEW -- use a Gemfile along with rvm or bundle to manage all your app
 # dependencies.
 # require 'sinatra'
 require 'net/http'
