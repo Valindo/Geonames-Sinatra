@@ -1,9 +1,8 @@
 # REVIEW -- use a Gemfile along with rvm or bundle to manage all your app
 # dependencies.
-require 'sinatra'
+# require 'sinatra'
 require 'net/http'
-require 'json'
-
+# require 'json'
 
 
 get '/' do
