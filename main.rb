@@ -28,7 +28,8 @@ get '/find/:name' do
 	erb :search
 end
 
-get '/check_nearby/:lat/:lng/:fcode' do
+post '/type_code_search/:fcode' do
+	@title = "Type search | "+params[:fcode].to_s
 	lat = params[:lat]
 	lng = params[:lng]
 	fcode = params[:fcode]
@@ -38,16 +39,18 @@ get '/check_nearby/:lat/:lng/:fcode' do
 	erb :search
 end
 
-get '/neighbours/:geonameid' do
-	geoid = params[:geonameid]
+post '/places_around/:name' do
+	@title = "Places around | "+params[:name].to_s
+	geoid = params[:geonameId]
 	uri = URI('http://api.geonames.org/neighboursJSON?geonameId='+geoid+'&username=valindo')
 	jsonfile = Net::HTTP.get(uri)
 	@my_hash = JSON.parse(jsonfile)
 	erb :search
 end
 
-get '/children/:geoname' do
-	geoid = params[:geoname]
+post '/places_in/:name' do
+	@title = "Places in | "+params[:name].to_s
+	geoid = params[:geonameId]
 	uri = URI('http://api.geonames.org/childrenJSON?geonameId='+geoid+'&username=valindo')
 	jsonfile = Net::HTTP.get(uri)
 	@my_hash = JSON.parse(jsonfile)
@@ -55,16 +58,17 @@ get '/children/:geoname' do
 end
 
 
-get '/contains/:geonameid' do
-	geoid = params[:geonameid]
-	uri = URI('http://api.geonames.org/containsJSON?geonameId='+geoid+'&username=valindo')
-	jsonfile = Net::HTTP.get(uri)
-	@my_hash = JSON.parse(jsonfile)
-	erb :contains
-end
+# get '/contains/:geonameid' do
+# 	geoid = params[:geonameid]
+# 	uri = URI('http://api.geonames.org/containsJSON?geonameId='+geoid+'&username=valindo')
+# 	jsonfile = Net::HTTP.get(uri)
+# 	@my_hash = JSON.parse(jsonfile)
+# 	erb :contains
+# end
 
 
 post '/info/:placename' do
+	@title = "About | "+params[:placename].to_s
 	@placename = params[:placename]
 	@geonameId = params[:geonameId]
 	@population = params[:population]
