@@ -43,8 +43,8 @@
 	</tr>
 
 </table>
-
+<% if @my_hash["geonames"] != [] %>
 <h3>Places in <%=@placename%></h3>
 
 <%= erb :'_table', :layout => false %>
-
+<%end%>
