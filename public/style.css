@@ -38,3 +38,7 @@
 	background-color: transparent;
 	color: #337ab7;
 }
+
+.smooth-edge{
+	border-radius: 50px;
+}
