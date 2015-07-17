@@ -1,18 +1,1 @@
-<table class="table table-hover">
-
-	<tr>
-		<!-- <th>map</th> -->
-		<th>Name</th>
-		<th>Type</th>
-		<th>Country Name</th>
-		<th>Latitude</th>
-		<th>Longitude</th>
-		<th>Population</th>
-		<th>Type Code</th>
-		<th>Places Around</th>
-		<th>Places In</th>
-	</tr>
-	<% @my_hash["geonames"].each do |x| %>
-		<%= erb :'_row', :layout => false, :locals => {:x=>x} %>
-	<% end %>
-</table>
+<%= erb :'_table', :layout => false %>

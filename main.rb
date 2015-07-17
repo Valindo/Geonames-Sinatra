@@ -5,14 +5,15 @@ require 'json'
 
 
 get '/' do
-	@a=10
+	@title = "Home"
 	erb :index
 end
 
 post '/search' do
+	@title = "Search | "+params[:name].to_s
 	data = params[:name]
 	data.gsub!(/\s/,"+")
-	uri = URI('http://api.geonames.org/searchJSON?q='+data+'&username=valindo')
+	uri = URI('http://api.geonames.org/searchJSON?q='+data+'&fuzzy=0&username=valindo')
 	jsonfile = Net::HTTP.get(uri)
 	@my_hash = JSON.parse(jsonfile)
 	erb :search
@@ -71,5 +72,8 @@ post '/info/:placename' do
 	@fclName = params[:fclName]
 	@lat = params[:lat]
 	@lng = params[:lng]
+	uri = URI('http://api.geonames.org/containsJSON?geonameId='+@geonameId+'&username=valindo')
+	jsonfile = Net::HTTP.get(uri)
+	@my_hash = JSON.parse(jsonfile)
 	erb :info
 end
