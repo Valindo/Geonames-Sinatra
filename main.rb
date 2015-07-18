@@ -46,7 +46,7 @@ get '/type_code_search' do
 	erb :search
 end
 
-post '/places_around/:name' do
+get '/places_around' do
 	@title = "Places around | "+params[:name].to_s
 	geoid = params[:geonameId]
 	uri = URI('http://api.geonames.org/neighboursJSON?geonameId='+geoid+'&username=valindo')

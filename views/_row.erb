@@ -49,12 +49,9 @@
 
 	<td>
 		<span class="search-list">
-			<form action="/places_around/<%=x["name"]%>" method="POST">
-				<div style="display:none">
-					<input type="hidden" name="geonameId" value="<%= x["geonameId"] %>">
-				</div>
-				<button class="search-name" type="submit"><span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span></button>
-			</form>
+			<a href="/places_around?name=<%=x["name"]%>&geonameId=<%= x["geonameId"] %>">
+				<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+			</a>
 		</span>
 	</td>
 
