@@ -1,8 +1,4 @@
-#DONE ----- # REVIEW -- use a Gemfile along with rvm or bundle to manage all your app
-# dependencies.
-# require 'sinatra'
 require 'net/http'
-# require 'json'
 require './api_model.rb'
 
 get '/' do
@@ -10,30 +6,13 @@ get '/' do
 	erb :index
 end
 
-# REVIEW -- why are these POST calls in the first place?
-post '/search' do
+get '/search' do
 	@title = "Search | "+params[:name].to_s
-	data = params[:name]
-
-	# REVIEW -- use a URI lirbary to encode your URLs. the following code takes
-	# care of only one case, space characters. There are a lot of special cases
-	# in URLs.
-	data.gsub!(/\s/,"+")
-	uri = URI('http://api.geonames.org/searchJSON?q='+data+'&fuzzy=0&username=valindo')
-	jsonfile = Net::HTTP.get(uri)
-	@my_hash = JSON.parse(jsonfile)
+	api_object = ApiCall.new("searchJSON",params)
+	@my_hash = api_object.api_json
 	erb :search
 end
-
-
 # REVIEW -- implement pagination. 10 at a time.
-get '/find/:name' do
-	data = params[:name]
-	uri = URI('http://api.geonames.org/searchJSON?name='+data+'&maxRows=10&username=valindo')
-	jsonfile = Net::HTTP.get(uri)
-	@my_hash = JSON.parse(jsonfile)
-	erb :search
-end
 
 get '/type_code_search' do
 	@title = "Type search | "+params[:fcode].to_s
