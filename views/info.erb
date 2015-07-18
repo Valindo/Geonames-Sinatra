@@ -1,10 +1,10 @@
-<h1 class="text-center"><%= @placename %></h1>
+<h1 class="text-center"><%= @info["name"] %></h1>
 <br/>
 <script>
 	function initialize() {
 		var mapCanvas = document.getElementById('map-canvas');
 		var mapOptions = {
-			center: new google.maps.LatLng(<%=@lat%>,<%=@lng%>),
+			center: new google.maps.LatLng(<%=@info["lat"]%>,<%=@info["lng"]%>),
 			zoom: 7,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
@@ -20,26 +20,26 @@
 <table class="table">
 	<tr>
 		<td>Country</td>
-		<td><%=@countryName%></td>
+		<td><%=@info["countryName"]%></td>
 	</tr>
 
 	<tr>
 		<td>Population</td>
-		<td><%=@population%></td>
+		<td><%=@info["population"]%></td>
 	</tr>
 	<tr>
 		<td>GeonameId</td>
-		<td><%=@geonameId%></td>
+		<td><%=@info["geonameId"]%></td>
 	</tr>
 
 	<tr>
 		<td>Type</td>
-		<td><%=@fclName%></td>
+		<td><%=@info["fclName"]%></td>
 	</tr>
 
 	<tr>
 		<td>Lat, Long</td>
-		<td><%=@lat%> , <%=@lng%></td>
+		<td><%=@info["lat"]%> , <%=@info["lng"]%></td>
 	</tr>
 
 </table>

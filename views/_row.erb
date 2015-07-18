@@ -2,7 +2,7 @@
 
 	<td>
 		<span class="search-list">
-			<a href="/info?genameId=<%= x["geonameId"] %>"><%= x["name"]%></a>
+			<a href="/info?geonameId=<%= x["geonameId"] %>"><%= x["name"]%></a>
 		</span>
 	</td>
 
@@ -40,13 +40,9 @@
 
 	<td>
 		<span class="search-list">
-			
-			<form action="/type_code_search/<%= x["fcode"] %>" method="POST">
-				<div style="display:none">
-					<input type="hidden" name="lat" value="<%= x["lat"] %>">
-					<input type="hidden" name="lng" value="<%= x["lng"] %>">
-				</div>
-				<button class="search-name" type="submit"><%=x["fcode"]%></button>
+				<a href="/type_code_search?fcode=<%=x["fcode"]%>&lat=<%= x["lat"] %>&lng=<%= x["lng"] %>">
+					<%=x["fcode"]%>
+				</a>
 			</form>
 		</span>
 	</td>
