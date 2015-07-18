@@ -39,13 +39,10 @@ end
 # the URL, make a separate call to fetch all the place details, and display
 # them directly instead of depending upon the POST params.
 get '/info' do
-	geonameId = params[:geonameId]
-	uri = URI('http://api.geonames.org/getJSON?geonameId='+geonameId+'&username=valindo')
-	jsonfile = Net::HTTP.get(uri)
-	@info = JSON.parse(jsonfile)
-	uri = URI('http://api.geonames.org/containsJSON?geonameId='+geonameId+'&username=valindo')
-	jsonfile = Net::HTTP.get(uri)
-	@my_hash = JSON.parse(jsonfile)
+	api_object = ApiCall.new("getJSON",params)
+	@info = api_object.api_json
+	api_object = ApiCall.new("containsJSON",params)
+	@my_hash = api_object.api_json
 	erb :info
 end
 
