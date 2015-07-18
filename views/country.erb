@@ -1,0 +1,15 @@
+<table class="table text-center">
+	<tr>
+		<th class="text-center">Country</th>
+	</tr>
+	<% @country_array.each do |x| %>
+	<tr>
+		<td>
+			<a href='/in/state?geonameId=<%= x.geonameId %>'>
+				<%= x.countryName %>
+			</a>
+		</td>
+	</tr>
+		
+<%end%>
+</table>

@@ -1,0 +1,15 @@
+<table class="table text-center">
+	<tr>
+		<th class="text-center">District</th>
+	</tr>
+	<% @district_array.each do |x| %>
+	<tr>
+		<td>
+			<a href='/in/city?geonameId=<%= x.geonameId %>'>
+				<%= x.name %>
+			</a>
+		</td>
+	</tr>
+		
+<%end%>
+</table>
