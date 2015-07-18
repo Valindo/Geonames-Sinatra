@@ -16,21 +16,20 @@ end
 
 get '/type_code_search' do
 	@title = "Type search | "+params[:fcode].to_s
-	lat = params[:lat]
-	lng = params[:lng]
-	fcode = params[:fcode]
-	uri = URI('http://api.geonames.org/findNearbyJSON?lng='+lng+'&lat='+lat+'&featureCode='+fcode+'&radius=100&username=valindo')
-	jsonfile = Net::HTTP.get(uri)
-	@my_hash = JSON.parse(jsonfile)
+	api_object = ApiCall.new("findNearbyJSON",params)
+	@my_hash = api_object.api_json
 	erb :search
 end
 
 get '/places_around' do
 	@title = "Places around | "+params[:name].to_s
-	geoid = params[:geonameId]
-	uri = URI('http://api.geonames.org/neighboursJSON?geonameId='+geoid+'&username=valindo')
-	jsonfile = Net::HTTP.get(uri)
-	@my_hash = JSON.parse(jsonfile)
+	# geoid = params[:geonameId]
+	# uri = URI('http://api.geonames.org/neighboursJSON?geonameId='+geoid+'&username=valindo')
+	# jsonfile = Net::HTTP.get(uri)
+	# @my_hash = JSON.parse(jsonfile)
+	# erb :search
+	api_object = ApiCall.new("neighboursJSON",params)
+	@my_hash = api_object.api_json
 	erb :search
 end
 
