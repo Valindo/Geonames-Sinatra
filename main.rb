@@ -3,7 +3,7 @@
 # require 'sinatra'
 require 'net/http'
 # require 'json'
-
+require './api_model.rb'
 
 get '/' do
 	@title = "Home"
@@ -80,7 +80,7 @@ end
 
 
 get '/test' do
-	@a = params
-	@b = ""
-	erb :test
+	api_object = ApiCall.new("searchJSON",params)
+	@my_hash = api_object.api_json
+	erb :search
 end
