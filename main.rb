@@ -76,17 +76,11 @@ end
 # REVIEW -- badly structured. This URL shoud take a unique place identifier in
 # the URL, make a separate call to fetch all the place details, and display
 # them directly instead of depending upon the POST params.
-post '/info/:placename' do
-	@title = "About | "+params[:placename].to_s
-	@placename = params[:placename]
-	@geonameId = params[:geonameId]
-	@population = params[:population]
-	@countryName = params[:countryName]
-	@fclName = params[:fclName]
-	@lat = params[:lat]
-	@lng = params[:lng]
-	uri = URI('http://api.geonames.org/containsJSON?geonameId='+@geonameId+'&username=valindo')
-	jsonfile = Net::HTTP.get(uri)
-	@my_hash = JSON.parse(jsonfile)
-	erb :info
+get '/info' do
+	geonameId = params[:geonameId]
+	
+	# uri = URI('http://api.geonames.org/containsJSON?geonameId='+@geonameId+'&username=valindo')
+	# jsonfile = Net::HTTP.get(uri)
+	# @my_hash = JSON.parse(jsonfile)
+	# erb :info
 end
