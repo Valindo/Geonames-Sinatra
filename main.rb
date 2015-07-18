@@ -77,3 +77,10 @@ get '/info' do
 	@my_hash = JSON.parse(jsonfile)
 	erb :info
 end
+
+
+get '/test' do
+	@a = params
+	@b = ""
+	erb :test
+end
