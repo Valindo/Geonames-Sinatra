@@ -27,6 +27,13 @@ get '/in/city' do
 	erb :city
 end
 
+
+get '/in/child' do
+	api_object = ApiCall.new("childrenJSON",params)
+	@child_array = api_object.api_child
+	erb :childrens
+end
+
 # get '/search' do
 # 	@title = "Search | "+params[:name].to_s
 # 	api_object = ApiCall.new("searchJSON",params)

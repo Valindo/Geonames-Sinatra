@@ -4,6 +4,7 @@ require "./country.rb"
 require "./state.rb"
 require "./district.rb"
 require "./city.rb"
+require "./child.rb"
 
 class ApiCall
 	attr_accessor :url, :query_type, :api_endpoint, :api_username
@@ -70,5 +71,16 @@ class ApiCall
 		array
 	end
 
+
+	def api_child
+		@url = URI( @@api_endpoint + @query_type + @url + @@api_username )
+		@jsonfile = Net::HTTP.get(@url)
+		@hash = JSON.parse(@jsonfile)
+		@hash["geonames"].each do |x|
+			object = Child.new(x)
+			array << object
+		end
+		array
+	end
 
 end

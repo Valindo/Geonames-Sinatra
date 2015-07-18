@@ -1,11 +1,11 @@
 <table class="table text-center">
 	<tr>
-		<th class="text-center"><%= @state_type%></th>
+		<!-- <th class="text-center"><%= @state_type%></th> -->
 	</tr>
-	<% @state_array.each do |x| %>
+	<% @child_array.each do |x| %>
 	<tr>
 		<td>
-			<a href='/in?id=<%= x.geonameId %>'>
+			<a href='/in/child?id=<%= x.geonameId %>'>
 				<%= x.name %>
 			</a>
 		</td>
