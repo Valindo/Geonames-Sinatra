@@ -45,10 +45,3 @@ get '/info' do
 	@my_hash = api_object.api_json
 	erb :info
 end
-
-
-get '/test' do
-	api_object = ApiCall.new("searchJSON",params)
-	@my_hash = api_object.api_json
-	erb :search
-end
