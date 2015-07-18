@@ -55,7 +55,7 @@ get '/places_around' do
 	erb :search
 end
 
-post '/places_in/:name' do
+get '/places_in' do
 	@title = "Places in | "+params[:name].to_s
 	geoid = params[:geonameId]
 	uri = URI('http://api.geonames.org/childrenJSON?geonameId='+geoid+'&username=valindo')
@@ -63,15 +63,6 @@ post '/places_in/:name' do
 	@my_hash = JSON.parse(jsonfile)
 	erb :search
 end
-
-
-# get '/contains/:geonameid' do
-# 	geoid = params[:geonameid]
-# 	uri = URI('http://api.geonames.org/containsJSON?geonameId='+geoid+'&username=valindo')
-# 	jsonfile = Net::HTTP.get(uri)
-# 	@my_hash = JSON.parse(jsonfile)
-# 	erb :contains
-# end
 
 # REVIEW -- badly structured. This URL shoud take a unique place identifier in
 # the URL, make a separate call to fetch all the place details, and display
